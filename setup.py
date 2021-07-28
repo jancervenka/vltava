@@ -1,7 +1,3 @@
-# majka==0.8
-# pytest==6.2.4
-# ufal.morphodita==1.10.1.1
-# gensim==4.0.1
 import setuptools
 
 VERSION = "0.1.1"
