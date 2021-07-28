@@ -1,3 +1,4 @@
+import os
 import majka
 from ufal.morphodita import Morpho, TaggedLemmas
 
@@ -16,10 +17,8 @@ import multiprocessing as mp
 
 from functools import partial
 from pkg_resources import get_distribution
-from importlib.resources import path
+# from importlib.resources import path
 from typing import Iterable, List, Union
-
-from vltava import resources
 
 
 _PREPROCESSING = [
@@ -50,8 +49,9 @@ def _get_resource_path(file_name: str) -> str:
     """
     Returns a full path to a file in the `resources` directory.
     """
-    with path(resources, file_name) as file_path:
-        return str(file_path)
+
+    this_dir = os.path.dirname(os.path.abspath(__file__))
+    return os.path.join(this_dir, 'resources', file_name)
 
 
 class _SerializableMajka(majka.Majka):

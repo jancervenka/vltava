@@ -1,5 +1,5 @@
 import pytest
-from vltava import DocumentProcessor
+from src.vltava import DocumentProcessor
 
 
 @pytest.mark.parametrize(

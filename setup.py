@@ -4,7 +4,7 @@
 # gensim==4.0.1
 import setuptools
 
-VERSION = "0.1.0"
+VERSION = "0.1.1"
 
 INSTALL_REQUIRES = [
     "majka>=0.8",
@@ -28,8 +28,10 @@ def run_setup():
         "description": "Opinionated Czech Language Processing",
         "author": "Jan Cervenka",
         "author_email": "jan.cervenka@yahoo.com",
-        # "package_dir": "vltava",
-        "packages": ["vltava"],
+        "package_dir": {"": "src"},
+        "packages": setuptools.find_packages(where="src"),
+        "include_package_data": True,
+        "package_data": {"": ["*.stopwords", "*.w-lt", "*.dict"]},
         "python_requires": ">=3.7",
         "install_requires": INSTALL_REQUIRES,
         "extras_require": EXTRAS_REQUIRE
