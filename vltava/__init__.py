@@ -1,5 +1,3 @@
-
-
 import majka
 from ufal.morphodita import Morpho, TaggedLemmas
 
