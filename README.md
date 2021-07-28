@@ -5,6 +5,11 @@
 [3]: https://github.com/petrpulc/python-majka
 [4]: https://pypi.org/project/ufal.morphodita/
 
+![PyPI](https://badge.fury.io/py/vltava.svg)
+![Test](https://github.com/jancervenka/vltava/actions/workflows/test.yml/badge.svg)
+![Publish](https://github.com/jancervenka/vltava/actions/workflows/publish.yml/badge.svg)
+
+
 Opinionated Czech language processing.
 
 The processor takes in raw documents and applies basic preprocessing
@@ -29,6 +34,12 @@ from vltava import DocumentProcessor
 docs = ["Ahoj, jak se máš?"] * 100
 
 result = DocumentProcessor().process_from_iterable(docs, n_jobs=2)
+```
+
+## Installation
+
+```bash
+pip install vltava
 ```
 
 ## Backend
@@ -73,9 +84,3 @@ tokens (if `tokenize` is `True`).
 
 If `n_jobs` is greater than one, multiple worker are launched to
 process the documents.
-
-## Installation
-
-```bash
-pip install vltava
-```
