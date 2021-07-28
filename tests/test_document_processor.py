@@ -21,3 +21,8 @@ def test_process_from_iterable():
 
     result = DocumentProcessor().process_from_iterable(docs, n_jobs=2)
     assert result == expected
+
+
+def test_raise_exception_if_unknown_backend():
+    with pytest.raises(ValueError):
+        DocumentProcessor(backend="test")
