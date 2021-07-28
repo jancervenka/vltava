@@ -1,5 +1,5 @@
 import pytest
-from src import _MajkaAnalyzer, _MorphoditaAnalyzer
+from vltava import _MajkaAnalyzer, _MorphoditaAnalyzer
 
 
 @pytest.mark.parametrize(

@@ -28,7 +28,7 @@ def run_setup():
         "description": "Opinionated Czech Language Processing",
         "author": "Jan Cervenka",
         "author_email": "jan.cervenka@yahoo.com",
-        #"package_dir": "vltava",
+        # "package_dir": "vltava",
         "packages": ["vltava"],
         "python_requires": ">=3.7",
         "install_requires": INSTALL_REQUIRES,
