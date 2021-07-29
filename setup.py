@@ -8,9 +8,7 @@ INSTALL_REQUIRES = [
     "gensim>4",
 ]
 
-EXTRAS_REQUIRE = {
-    "tests": ["pytest"]
-}
+EXTRAS_REQUIRE = {"tests": ["pytest"]}
 
 
 def run_setup():
@@ -30,11 +28,10 @@ def run_setup():
         "package_data": {"": ["*.stopwords", "*.w-lt", "*.dict"]},
         "python_requires": ">=3.7",
         "install_requires": INSTALL_REQUIRES,
-        "extras_require": EXTRAS_REQUIRE
-
-        }
+        "extras_require": EXTRAS_REQUIRE,
+    }
     setuptools.setup(**setup_params)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     run_setup()
