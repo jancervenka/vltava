@@ -10,14 +10,14 @@ from gensim.parsing.preprocessing import (
     strip_multiple_whitespaces,
     strip_numeric,
     remove_stopwords,
-    strip_short
+    strip_short,
 )
 
 import multiprocessing as mp
 
 from functools import partial
 from pkg_resources import get_distribution
-# from importlib.resources import path
+
 from typing import Iterable, List, Union
 
 
@@ -37,12 +37,12 @@ _MAJKA_FILE_NAME = "majka.w-lt"
 _MORPHODITA_FILE_NAME = "nlp_czech-morfflex-161115-no_dia.dict"
 
 
-__module_name__ = 'vltava'
+__module_name__ = "vltava"
 
 try:
     __version__ = get_distribution(__module_name__).version
 except Exception:
-    __version__ = 'unknown'
+    __version__ = "unknown"
 
 
 def _get_resource_path(file_name: str) -> str:
@@ -51,7 +51,7 @@ def _get_resource_path(file_name: str) -> str:
     """
 
     this_dir = os.path.dirname(os.path.abspath(__file__))
-    return os.path.join(this_dir, 'resources', file_name)
+    return os.path.join(this_dir, "resources", file_name)
 
 
 class _SerializableMajka(majka.Majka):
@@ -95,7 +95,7 @@ class _MajkaAnalyzer:
         if not lemma_list:
             return raw_word
 
-        return lemma_list[0]['lemma']
+        return lemma_list[0]["lemma"]
 
 
 class _MorphoditaAnalyzer:
@@ -174,11 +174,9 @@ class DocumentProcessor:
             )
 
         with open(_get_resource_path(_STOPWORDS_FILE_NAME)) as f:
-            self._stopwords = set(f.read().split('\n'))
+            self._stopwords = set(f.read().split("\n"))
 
-    def process(
-        self, doc: str, tokenize: bool = True
-    ) -> Union[str, List[str]]:
+    def process(self, doc: str, tokenize: bool = True) -> Union[str, List[str]]:
         """
         Processes the input `doc` and returns it as a processed
         string or a list of processed tokens, if `tokenize` is `True`.
@@ -189,10 +187,11 @@ class DocumentProcessor:
         # lemmatization reintroduces accents
         processed_doc = [
             deaccent(self._analyzer.get_lemma(token))
-            for token in preprocessed_doc if token not in self._stopwords
+            for token in preprocessed_doc
+            if token not in self._stopwords
         ]
 
-        return processed_doc if tokenize else ' '.join(processed_doc)
+        return processed_doc if tokenize else " ".join(processed_doc)
 
     def process_from_iterable(
         self, docs: Iterable[str], tokenize: bool = True, n_jobs: int = 1
