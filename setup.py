@@ -1,6 +1,7 @@
 import setuptools
+import pathlib
 
-VERSION = "0.1.2"
+VERSION = "0.1.3"
 
 INSTALL_REQUIRES = [
     "majka>=0.8",
@@ -15,6 +16,8 @@ def run_setup():
     """
     Runs the package setup.
     """
+    
+    this_directory = pathlib.Path(__file__).parent
 
     setup_params = {
         "name": "vltava",
@@ -22,6 +25,8 @@ def run_setup():
         "description": "Opinionated Czech Language Processing",
         "author": "Jan Cervenka",
         "author_email": "jan.cervenka@yahoo.com",
+        "long_description": (this_directory / "README.md").read_text(),
+        "long_description_content_type": "text/markdown",
         "package_dir": {"": "src"},
         "packages": setuptools.find_packages(where="src"),
         "include_package_data": True,
